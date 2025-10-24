@@ -15,10 +15,10 @@ Heute habe ich mich darauf konzentriert, im Modul 324 weiter zu arbeiten. Ich ha
 
 ## Für den 24.10.2025
 
-- [ ] Weiter an meiner Casino-Website
-- [ ] Weiter an meiner Casino-Website
-- [ ] Weiter an meiner Casino-Website
-- [ ] Weiter an meiner Casino-Website
+- [x] Weiter an meiner Casino-Website
+- [X] Weiter an meiner Casino-Website
+- [X] Weiter an meiner Casino-Website
+- [X] Weiter an meiner Casino-Website
 
 ## 24.10.2025
 ## Leit-Satz
