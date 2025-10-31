@@ -29,7 +29,22 @@ Heute habe ich meine Casino-Website weitergeführt. Leider lief es heute gar nic
 
 ## Für den 31.10.2025
 
+- [x] Weiter an meiner Casino-Website
+- [x] Weiter an meiner Casino-Website
+- [x] Zur Casino-Website das Login
+- [x] Mögliche Bewerbungen weiter versenden
+
+## 31.10.2025
+## Leit-Satz
+
+Heute habe ich meine Casino-Website weiter bearbeitet. Diesmal lief es deutlich besser als letztes mal, da es letztes mal wirklich nicht so gut ging. Die Registrierung und Anmeldung konnte ich erfolgreich meistern, was wirklich einfach nur eine Aufgabe von Geduld war und ich sogar am Ende ein "Dashboard" erstellt habe. Das Design muss stand jetzt noch ein bisschen überarbeitet werden, da es nicht wirklich zum restlichen Design passt und ich es wirklich Einheitlich und schön haben möchte. Im grossen und ganzen bin ich mit meiner Leistung zufrieden und freue mich auch schon nächte Woche weiter an den Spielen zu coden. (100 Wörter)
+
+## Für den 7.11.2025
+
 - [ ] Weiter an meiner Casino-Website
-- [ ] Weiter an meiner Casino-Website
-- [ ] Zur Casino-Website das Login
-- [ ] Mögliche Bewerbungen weiter versenden
+- [ ] Weitere Spiele hinzufügen
+- [ ] möglicherweise Online testen (Mit mehreren Spielern)
+- [ ] Weitere Bewerbungen abschicken
+
+## 7.11.2025
+## Leit-Satz
