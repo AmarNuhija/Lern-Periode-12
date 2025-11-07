@@ -41,10 +41,10 @@ Heute habe ich meine Casino-Website weiter bearbeitet. Diesmal lief es deutlich 
 
 ## Für den 7.11.2025
 
-- [ ] Weiter an meiner Casino-Website
-- [ ] Weitere Spiele hinzufügen
+- [x] Weiter an meiner Casino-Website
+- [x] Weitere Spiele hinzufügen
 - [ ] möglicherweise Online testen (Mit mehreren Spielern)
-- [ ] Weitere Bewerbungen abschicken
+- [x] Weitere Bewerbungen abschicken
 
 ## 7.11.2025
 ## Leit-Satz
