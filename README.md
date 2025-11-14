@@ -48,3 +48,15 @@ Heute habe ich meine Casino-Website weiter bearbeitet. Diesmal lief es deutlich 
 
 ## 7.11.2025
 ## Leit-Satz
+
+Heute habe ich sowohl auf Coddy weiterprogrammiert als auch an meiner Casino-Website ein paar wichtige Feinschliffe vorgenommen. Besonders bei Coddy konnte ich gute Fortschritte erzielen und meine bestehenden Funktionen optimieren. Auf meiner Casino-Seite konzentrierte ich mich darauf, kleine Fehler zu beheben und das Spielerlebnis weiter zu verbessern. Obwohl es eher ein Tag der Detailarbeit war, bin ich zufrieden mit dem Ergebnis, da solche Feinschliffe das Gesamtprojekt deutlich professioneller wirken lassen. Ich freue mich darauf, nächste Woche weiter an neuen Features zu arbeiten und mein Projekt weiter voranzubringen. (95 Wörter)
+
+## Für den 14.11.2025
+
+- [ ] Weiter an meine Casino-Website
+- [ ] Mögliche Design reinbringen, sowie interaktive Bilder usw.
+- [ ] Online testen lassen von verschiedenen User
+- [ ] Weitere Bewerbungen abschicken
+
+## 14.11.2025
+## Leit-Satz
