@@ -53,10 +53,22 @@ Heute habe ich sowohl auf Coddy weiterprogrammiert als auch an meiner Casino-Web
 
 ## Für den 14.11.2025
 
-- [ ] Weiter an meine Casino-Website
+- [x] Weiter an meine Casino-Website
 - [ ] Mögliche Design reinbringen, sowie interaktive Bilder usw.
-- [ ] Online testen lassen von verschiedenen User
-- [ ] Weitere Bewerbungen abschicken
+- [x] Online testen lassen von verschiedenen User
+- [x] Weitere Bewerbungen abschicken
 
 ## 14.11.2025
+## Leit-Satz
+
+Heute habe ich an meiner Casino-Website ein paar weitere Veränderungen vorgenommen. Vor einer Woche hatte ich nocht die Funktion drinnen, Hell und Dunkel ändern. Doch das hat mir nicht gefallen und die Funktion hat auch nicht wirklich funktioniert da nicht das ganze Grid geändert worden ist sondern nur die Lobby wurde von Hell zu Dunkel. Das habe ich am Ende rausgelöscht und einfach die Kachel "Mein Konto" verbessert. Einige Fehler sind noch drinnen. Den mein Lotto Spiel das ich vor 2 Wochen erledigt habe funktioniert nicht mehr. Das Werde ich auf nächsten Freitag ändern, weil es auch wirklich zu den Hauptfunktionen gehört und es auch wirklich spass macht. (108 Wörter)
+
+## Für den 21.11.25
+
+- [ ] Weiter an meiner Casino-Website
+- [ ] Interaktive Bilder usw.
+- [ ] JeeBet Lotto verbessern
+- [ ] Weitere Bewerbungen schicken
+
+## 21.11.25
 ## Leit-Satz
