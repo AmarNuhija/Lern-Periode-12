@@ -1,4 +1,5 @@
 # Lern-Periode-12
+# Wichtig! Ich habe auch mein aktuellstes Projekt hochgeladen
 DevOps and Mobile-Application Modules
 ## Grob-Planung
 - Für diese Lernperiode versuche ich die letzten feinschliffe für mein Schach-Spiel fertig zu bekommen.
