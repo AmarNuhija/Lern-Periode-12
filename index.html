@@ -1,0 +1,1584 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JeeBet Casino</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="Logo.png" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pacifico&family=Dancing+Script:wght@700&family=Great+Vibes&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Loader -->
+    <div class="loader" id="loader"><div class="loader-spinner"></div></div>
+
+    <!-- Header -->
+    <header>
+      <div class="logo" onclick="showSection('home')">JeeBet</div>
+      <nav>
+        <ul>
+          <li>
+            <a
+              onclick="showSection('home'); showNotification('Du bist zur Lobby gewechselt');"
+              id="nav-home"
+              >Lobby</a
+            >
+          </li>
+          <li>
+            <a
+              onclick="showSection('games'); showNotification('Du bist zu den Spielen gewechselt')"
+              id="nav-games"
+              >Spiele</a
+            >
+          </li>
+          <li>
+            <a
+              onclick="showSection('promotions'); showNotification('Du bist zu Promotions gewechselt');"
+              >Promotionen</a
+            >
+          </li>
+          <li>
+            <a
+              onclick="showSection('about'); showNotification('Du bist zu Über uns gewechselt')"
+              >Über uns</a
+            >
+          </li>
+        </ul>
+      </nav>
+      <div class="auth-buttons" id="auth-buttons">
+        <button class="btn btn-login" id="loginBtn">Anmelden</button>
+        <button class="btn btn-register" id="registerBtn">Registrieren</button>
+      </div>
+      <div class="user-dashboard" id="user-dashboard">
+        <div class="user-balance">
+          <i class="fas fa-coins"></i
+          ><span id="user-balance-amount">CHF100.00</span>
+        </div>
+        <div class="user-avatar" id="user-menu-btn">
+          <i class="fas fa-user"></i>
+        </div>
+        <!-- Dropdown -->
+        <div class="user-menu" id="user-menu">
+          <div class="user-menu-header">Angemeldet</div>
+          <button class="user-menu-item" id="profileBtn">
+            <i class="fas fa-id-badge"></i><span>Mein Konto</span>
+          </button>
+          <button class="user-menu-item" id="logoutBtn">
+            <i class="fas fa-sign-out-alt"></i><span>Abmelden</span>
+          </button>
+          <button class="user-menu-name" id="nameBtn">
+            <i class="fas fa-signature"></i><span>Name</span>
+          </button>
+        </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- User Hero Section -->
+<section id="userHero" class="user-hero" style="display: none;">
+  <div class="user-hero-content">
+    <button id="closeHeroBtn" class="close-hero-btn">&times;</button>
+    <div class="avatar-container">
+      <img id="userHeroAvatar" src="" alt="Profilbild" class="user-hero-avatar">
+      <input type="file" id="avatarUpload" accept="image/*" style="display: none;">
+      <button id="changeAvatarBtn" class="change-avatar-btn" title="Profilbild ändern">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M21,4H17.9A5,5,0,0,0,7.73,4.52L6.1,7H3A1,1,0,0,0,3,9H5.29l1.33,2H3a1,1,0,0,0,0,2H21a1,1,0,0,0,0-2H9.88l3.25-5H21a1,1,0,0,0,0-2ZM9.38,9.16l2.56-4.41A3,3,0,0,1,17.9,6h1.47l-3.25,5Z"/>
+          <path d="M11,12a4,4,0,1,0,4,4A4,4,0,0,0,11,12Zm0,6a2,2,0,1,1,2-2A2,2,0,0,1,11,18Z"/>
+        </svg>
+      </button>
+    </div>
+    <h1 id="userHeroName" class="user-hero-name">Benutzername</h1>
+  </div>
+</section>
+
+    <!-- Notification -->
+    <div class="notification" id="notification"></div>
+
+    <!-- Home -->
+    <section id="home-section" class="page-section">
+      <div class="hero">
+        <h1>Das ultimative Casino</h1>
+        <p>
+          Entdecke die aufregendsten Spiele mit den höchsten Gewinnchancen.
+          Registriere dich jetzt und erhalte deinen Willkommensbonus!
+        </p>
+        <div class="hero-buttons">
+          <button class="btn btn-register" id="hero-play-btn">
+            Jetzt spielen
+          </button>
+          <button class="btn btn-login" onclick="showSection('games')">
+            Spiele entdecken
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <div class="acc-root" id="accountRoot" hidden>
+      <button
+        class="acc-overlay"
+        id="accountOverlay"
+        aria-label="Hintergrund – schliessen"
+      ></button>
+
+      <section
+        class="acc-panel"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="accTitle"
+      >
+        <header class="acc-header">
+          <button class="acc-close-x" title="Schliessen" aria-label="Schliessen" onclick="closeAccountPanel()">×</button>
+          <div class="acc-head-left">
+            <div class="acc-avatar" id="accAvatar">U</div>
+            <div>
+              <h2 id="accTitle">Mein Konto</h2>
+              <p class="acc-sub">
+              <p class="acc-meta"><span>Angemeldet als</span> <b id="accUserName">Spieler</b></p>
+              </p>
+            </div>
+          </div>
+          <div class="acc-head-right">
+            <div class="acc-balance">
+              Guthaben: <span id="accBalance">CHF0,00</span>
+            </div>
+            <button class="acc-btn acc-muted" id="accountCloseBtn">
+              Schliessen
+            </button>
+          </div>
+        </header>
+
+        <nav class="acc-tabs" role="tablist" aria-label="Kontoabschnitte">
+          <button role="tab" aria-selected="true" data-acc-tab="overview">
+            Überblick
+          </button>
+          <button role="tab" data-acc-tab="payments">Ein-/Auszahlung</button>
+          <button role="tab" data-acc-tab="transactions">Transaktionen</button>
+          <button role="tab" data-acc-tab="bonuses">Boni</button>
+          <button role="tab" data-acc-tab="kyc">Verifizierung</button>
+          <button role="tab" data-acc-tab="security">Sicherheit</button>
+          <button role="tab" data-acc-tab="limits">Limits</button>
+          <button role="tab" data-acc-tab="settings">Einstellungen</button>
+        </nav>
+
+        <div class="acc-content">
+          <!-- Überblick -->
+          <div class="acc-tab" data-acc-panel="overview">
+            <div class="acc-grid">
+              <section class="acc-card">
+                <h3>Guthaben</h3>
+                <p class="acc-balance-xl" id="accBalanceBig">CHF0,00</p>
+                <div class="acc-actions">
+                  <button class="acc-btn acc-primary">Einzahlen</button>
+                  <button class="acc-btn acc-muted">Auszahlen</button>
+                </div>
+              </section>
+
+              <section class="acc-card">
+                <h3>Zahlungsmethoden</h3>
+                <ul class="acc-list">
+                  <li>
+                    • Visa **** 1234 <span class="acc-dim">(Standard)</span>
+                  </li>
+                  <li>• PayPal verknüpft</li>
+                  <li>• Bankkonto DE**…</li>
+                </ul>
+                <button class="acc-link">Methode hinzufügen</button>
+              </section>
+
+              <section class="acc-card">
+                <h3>Status & Verifizierung</h3>
+                <p class="acc-sm">
+                  KYC-Status: <b class="acc-warn">Ausstehend</b>
+                </p>
+                <button class="acc-btn acc-muted">Dokumente hochladen</button>
+              </section>
+
+              <section class="acc-card">
+                <div class="acc-card-head">
+                  <h3>Letzte Transaktionen</h3>
+                  <button class="acc-link" data-acc-switch="transactions">
+                    Alle anzeigen
+                  </button>
+                </div>
+                <ul class="acc-list tight">
+                  <li class="acc-row">
+                    <span>Einzahlung – Visa</span><span>CHF50,00</span>
+                  </li>
+                  <li class="acc-row">
+                    <span>Auszahlung – Bank</span><span>CHF120,00</span>
+                  </li>
+                  <li class="acc-row">
+                    <span>Einsatz – Slot</span><span>CHF2,00</span>
+                  </li>
+                </ul>
+              </section>
+
+              <section class="acc-card">
+                <h3>Boni</h3>
+                <p class="acc-sm">
+                  Willkommensbonus 100% – <b class="acc-ok">aktiv</b>
+                </p>
+                <div class="acc-progress"><div style="width: 45%"></div></div>
+                <p class="acc-xs acc-dim">Umsatz 45% erledigt</p>
+              </section>
+
+              <section class="acc-card">
+                <h3>Sicherheit</h3>
+                <ul class="acc-list">
+                  <li>• 2FA: <b class="acc-bad">deaktiviert</b></li>
+                  <li>• Letzte Anmeldung: heute</li>
+                </ul>
+                <button class="acc-btn acc-muted">2FA aktivieren</button>
+              </section>
+            </div>
+          </div>
+
+          <!-- Ein-/Auszahlung -->
+          <div class="acc-tab" data-acc-panel="payments" hidden>
+            <div class="acc-grid two">
+              <section class="acc-card">
+                <h3>Einzahlen</h3>
+                <form class="acc-form">
+                  <label
+                    >Betrag (CHF)
+                    <input type="number" placeholder="50" min="1" step="1" />
+                  </label>
+                  <label
+                    >Methode
+                    <select>
+                      <option>Visa</option>
+                      <option>Mastercard</option>
+                      <option>PayPal</option>
+                      <option>SEPA</option>
+                    </select>
+                  </label>
+                  <button class="acc-btn acc-primary" type="button">
+                    Einzahlen
+                  </button>
+                </form>
+              </section>
+
+              <section class="acc-card">
+                <h3>Auszahlen</h3>
+                <form class="acc-form">
+                  <label
+                    >Betrag (CHF)
+                    <input type="number" placeholder="100" min="1" step="1" />
+                  </label>
+                  <label
+                    >Ziel
+                    <select>
+                      <option>SEPA Bankkonto</option>
+                      <option>PayPal</option>
+                    </select>
+                  </label>
+                  <button class="acc-btn acc-muted" type="button">
+                    Auszahlen
+                  </button>
+                </form>
+              </section>
+            </div>
+          </div>
+
+          <!-- Transaktionen -->
+          <div class="acc-tab" data-acc-panel="transactions" hidden>
+            <section class="acc-card">
+              <h3>Transaktionen</h3>
+              <div class="acc-table-wrap">
+                <table class="acc-table">
+                  <thead>
+                    <tr>
+                      <th>Datum</th>
+                      <th>Typ</th>
+                      <th>Methode</th>
+                      <th>Status</th>
+                      <th class="right">Betrag</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>28.10.2025</td>
+                      <td>Einzahlung</td>
+                      <td>Visa</td>
+                      <td>Erfolgreich</td>
+                      <td class="right">+CHF50,00</td>
+                    </tr>
+                    <tr>
+                      <td>27.10.2025</td>
+                      <td>Auszahlung</td>
+                      <td>SEPA</td>
+                      <td>In Bearbeitung</td>
+                      <td class="right">CHF120,00</td>
+                    </tr>
+                    <tr>
+                      <td>27.10.2025</td>
+                      <td>Einsatz</td>
+                      <td>Spiel</td>
+                      <td>Abgeschlossen</td>
+                      <td class="right">CHF2,00</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </section>
+          </div>
+
+          <!-- Restliche Tabs – Inhalte kurz -->
+          <div class="acc-tab" data-acc-panel="bonuses" hidden>
+            <section class="acc-card">
+              <h3>Boni</h3>
+              <p class="acc-sm">Aktiver Bonus: 100% · Umsatz 45%</p>
+            </section>
+          </div>
+          <div class="acc-tab" data-acc-panel="kyc" hidden>
+            <section class="acc-card">
+              <h3>Verifizierung</h3>
+              <p class="acc-sm">
+                Dokumente hochladen: Ausweis, Adressnachweis, Selfie.
+              </p>
+            </section>
+          </div>
+          <div class="acc-tab" data-acc-panel="security" hidden>
+            <section class="acc-card">
+              <h3>Sicherheit</h3>
+              <p class="acc-sm">Passwort ändern & 2FA aktivieren.</p>
+            </section>
+          </div>
+          <div class="acc-tab" data-acc-panel="limits" hidden>
+            <section class="acc-card">
+              <h3>Limits</h3>
+              <p class="acc-sm">
+                Einzahlungs-/Verlust-/Sitzungslimits festlegen.
+              </p>
+            </section>
+          </div>
+          <div class="acc-tab" data-acc-panel="settings" hidden>
+            <section class="acc-card">
+              <h3>Einstellungen</h3>
+              <p class="acc-sm">Sprache/Währung/Benachrichtigungen.</p>
+            </section>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Games -->
+    <section id="games-section" class="page-section">
+      <h2 class="section-title">Unsere Spiele</h2>
+      <div class="games-grid">
+        <div class="game-card">
+          <div class="game-image card-slots">Slots</div>
+          <div class="game-details">
+            <h3 class="game-title">JeeBet Slots</h3>
+            <p class="game-description">Dreh die Walzen wie noch nie zuvor</p>
+            <button class="play-btn" onclick="openSlots()">
+              Jetzt spielen
+            </button>
+          </div>
+        </div>
+
+        <div class="game-card">
+          <div class="game-image card-roulette">Roulette</div>
+          <div class="game-details">
+            <h3 class="game-title">European Roulette</h3>
+            <p class="game-description">
+              Setze auf deine Glückszahlen im klassischen Roulette
+            </p>
+            <button class="play-btn" onclick="openRoulette()">
+              Jetzt spielen
+            </button>
+          </div>
+        </div>
+
+        <div class="game-card">
+          <div class="game-image card-blackjack">Blackjack</div>
+          <div class="game-details">
+            <h3 class="game-title">VIP Blackjack</h3>
+            <p class="game-description">
+              Spiele gegen den Dealer und versuche, 21 zu erreichen
+            </p>
+            <button class="play-btn" onclick="openBlackjack()">
+              Jetzt spielen
+            </button>
+          </div>
+        </div>
+
+        <!-- PLINKO -->
+        <div class="game-card">
+          <div class="game-image card-plinko">Plinko</div>
+          <div class="game-details">
+            <h3 class="game-title">Plinko Ball</h3>
+            <p class="game-description">
+              Lass den Ball fallen – je schwerer, desto höher die
+              Multiplikatoren
+            </p>
+            <button class="play-btn" onclick="openPlinko()">
+              Jetzt spielen
+            </button>
+          </div>
+        </div>
+
+        <div class="game-card">
+          <div class="game-image card-lotto"></div>
+          <div class="game-details">
+            <h3 class="game-title">JeeBet Lotto</h3>
+            <p class="game-description">
+              Wähle 5 Zahlen zwischen 1-50 und teste dein Glück
+            </p>
+            <button class="play-btn" onclick="openJeeLotto()">
+              Jetzt spielen
+            </button>
+          </div>
+        </div>
+
+        <!-- JeeLotto Modal -->
+        <div id="jeelottoModal" class="jl-modal" hidden>
+          <div class="jl-backdrop" data-jl-close></div>
+          <section
+            class="jl-panel"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="jlTitle"
+          >
+            <header class="jl-header">
+              <h2 id="jlTitle">JeeLotto</h2>
+              <button class="jl-close" title="Schliessen" data-jl-close>
+                &times;
+              </button>
+            </header>
+
+            <div class="jl-meta">
+              <div>Spieltag: <b>Dienstag</b></div>
+              <div>Nächste Ziehung: <span id="jl-next-draw"></span></div>
+              <div>Status: <span id="jl-status" class="jl-dim"></span></div>
+            </div>
+
+            <div class="jl-grid">
+              <!-- Spielfeld -->
+              <section class="jl-card">
+                <h3>Tipp abgeben – wähle 5 Zahlen (1–50)</h3>
+                <div id="jl-board" class="jl-board"></div>
+                <div class="jl-actions">
+                  <button id="jl-clear" class="jl-btn jl-muted">
+                    Zurücksetzen
+                  </button>
+                  <button id="jl-random" class="jl-btn jl-muted">Zufall</button>
+                  <button id="jl-submit" class="jl-btn jl-primary">
+                    Ticket kaufen (CHF2)
+                  </button>
+                </div>
+                <p id="jl-hint" class="jl-dim jl-xs"></p>
+              </section>
+
+              <!-- Meine Tickets -->
+              <section class="jl-card">
+                <div class="jl-card-head">
+                  <h3>Meine Tickets</h3>
+                  <button id="jl-refresh" class="jl-link">Aktualisieren</button>
+                </div>
+                <div id="jl-tickets" class="jl-tickets"></div>
+              </section>
+            </div>
+          </section>
+        </div>
+
+        <div class="game-card">
+          <div class="game-image">Poker</div>
+          <div class="game-details">
+            <h3 class="game-title">Texas Hold'em</h3>
+            <p class="game-description">
+              Das beliebteste Poker-Spiel mit echten Gegnern
+            </p>
+            <button class="play-btn" onclick="playGame('Texas Hold&#39;em')">
+              Jetzt spielen
+            </button>
+          </div>
+        </div>
+
+        <div class="game-card">
+          <div class="game-image">Baccarat</div>
+          <div class="game-details">
+            <h3 class="game-title">Punto Banco</h3>
+            <p class="game-description">
+              Einfaches und elegantes Kartenspiel mit hohen Gewinnchancen
+            </p>
+            <button class="play-btn" onclick="playGame('Punto Banco')">
+              Jetzt spielen
+            </button>
+          </div>
+        </div>
+
+        <div class="game-card">
+          <div class="game-image">Live</div>
+          <div class="game-details">
+            <h3 class="game-title">Live Casino</h3>
+            <p class="game-description">
+              Spiele mit echten Dealern in Echtzeit
+            </p>
+            <button class="play-btn" onclick="playGame('Live Casino')">
+              Jetzt spielen
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Slots Section -->
+    <section id="slots-section" class="page-section" style="display: none">
+      <div class="slots-wrap">
+        <div class="back-button-container">
+          <button class="back-btn" onclick="showSection('games')">
+            <i class="fas fa-arrow-left"></i> Zurück zu Spielen
+          </button>
+        </div>
+        <h2 class="section-title">Diamond Casino Slots</h2>
+
+        <div class="slots-machine">
+          <div class="slots-header">
+            <div class="slots-bet-controls">
+              <label for="slotsBet">Einsatz (CHF):</label>
+              <input type="number" id="slotsBet" min="1" step="1" value="5" />
+              <span class="slots-status" id="slotsBalanceInfo"></span>
+            </div>
+
+            <div class="slots-info-panel">
+              <div class="slots-credits">
+                GUTHABEN: <span id="slotsCredits">1000</span>
+              </div>
+              <div class="slots-win-display">
+                GEWINN: <span id="slotsWin">0</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="slots-container">
+            <div class="slots-reels" id="slotsReels">
+              <!-- 3x3 Grid für die Symbole -->
+              <div class="reel" id="reel1">
+                <div class="symbol">🍒</div>
+                <div class="symbol">🍋</div>
+                <div class="symbol">🍊</div>
+              </div>
+              <div class="reel" id="reel2">
+                <div class="symbol">🍒</div>
+                <div class="symbol">🍋</div>
+                <div class="symbol">🍊</div>
+              </div>
+              <div class="reel" id="reel3">
+                <div class="symbol">🍒</div>
+                <div class="symbol">🍋</div>
+                <div class="symbol">🍊</div>
+              </div>
+            </div>
+
+            <div class="slots-paylines"></div>
+          </div>
+
+          <div class="slots-controls">
+            <button class="slots-spin-btn" id="slotsSpin">SPIN</button>
+            <button class="slots-max-bet" id="slotsMaxBet">MAX EINSATZ</button>
+          </div>
+
+          <div class="slots-paytable">
+            <h3>Auszahlungen</h3>
+            <div class="paytable-item">🍒🍒🍒 = 10x Einsatz</div>
+            <div class="paytable-item">🍋🍋🍋 = 20x Einsatz</div>
+            <div class="paytable-item">🍊🍊🍊 = 30x Einsatz</div>
+            <div class="paytable-item">7️⃣7️⃣7️⃣ = JACKPOT 100x</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Promotions -->
+    <section id="promotions-section" class="page-section">
+      <h2 class="section-title">Aktuelle Promotionen</h2>
+      <div class="promo-cards">
+        <div class="promo-card">
+          <div class="promo-content">
+            <span class="promo-badge">Neu</span>
+            <h3>Willkommensbonus</h3>
+            <p>
+              Erhalte 100% bis zu CHF250 + 50 Freispiele auf deine erste
+              Einzahlung.
+            </p>
+            <button class="play-btn" onclick="claimBonus('Willkommensbonus')">
+              Jetzt beanspruchen
+            </button>
+          </div>
+        </div>
+        <div class="promo-card">
+          <div class="promo-content">
+            <span class="promo-badge">Beliebt</span>
+            <h3>Wöchentliche Freispiele</h3>
+            <p>Jede Woche 15 Freispiele für unsere treuen Spieler.</p>
+            <button
+              class="play-btn"
+              onclick="claimBonus('Wöchentliche Freispiele')"
+            >
+              Jetzt beanspruchen
+            </button>
+          </div>
+        </div>
+        <div class="promo-card">
+          <div class="promo-content">
+            <span class="promo-badge">Exklusiv</span>
+            <h3>High Roller Bonus</h3>
+            <p>Spezieller Bonus für Spieler mit höheren Einsätzen.</p>
+            <button class="play-btn" onclick="claimBonus('High Roller Bonus')">
+              Jetzt beanspruchen
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about-section" class="page-section">
+      <h2 class="section-title">Über Uns</h2>
+      <div class="about-content">
+        <p class="about-text">
+          JeeBet ist ein führendes Online-Casino, das sich auf innovative Spiele
+          und ein faires Spielerlebnis spezialisiert hat. Wir bieten eine breite
+          Palette von Spielen von den besten Entwicklern der Branche.
+        </p>
+        <div class="features">
+          <div class="feature">
+            <i class="fas fa-shield-alt"></i>
+            <h3>Sicher & Geschützt</h3>
+            <p>
+              State-of-the-art Verschlüsselungstechnologie zum Schutz Ihrer
+              Daten.
+            </p>
+          </div>
+          <div class="feature">
+            <i class="fas fa-gamepad"></i>
+            <h3>Über 20 Spiele</h3>
+            <p>Slots, Tischspiele, Live-Casino und vieles mehr.</p>
+          </div>
+          <div class="feature">
+            <i class="fas fa-euro-sign"></i>
+            <h3>Schnelle Auszahlungen</h3>
+            <p>Ihre Gewinne werden innerhalb von 24 Stunden ausgezahlt.</p>
+          </div>
+          <div class="feature">
+            <i class="fas fa-headset"></i>
+            <h3>24/7 Support</h3>
+            <p>Unser Kundenservice ist rund um die Uhr für Sie da.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BLACKJACK -->
+    <section id="blackjack-section" class="page-section" style="display: none">
+      <div class="bj-wrap">
+        <div class="back-button-container">
+          <button class="back-btn" onclick="showSection('games')">
+            <i class="fas fa-arrow-left"></i> Zurück zu Spielen
+          </button>
+        </div>
+        <h2 class="section-title">Black Jack</h2>
+
+        <div class="bj-table">
+          <div class="bj-bet">
+            <label for="bjBet">Einsatz (CHF):</label>
+            <input type="number" id="bjBet" min="1" step="1" value="10" />
+            <button class="chip" id="bjStart">Runde starten</button>
+            <span class="bj-status" id="bjBalanceInfo"></span>
+          </div>
+
+          <div class="bj-rows">
+            <div class="bj-area">
+              <h4>Dealer <span id="dealerScore"></span></h4>
+              <div class="cards" id="dealerCards"></div>
+            </div>
+
+            <div class="bj-area">
+              <h4>Spieler <span id="playerScore"></span></h4>
+              <div class="cards" id="playerCards"></div>
+
+              <div class="bj-controls">
+                <button class="chip" id="bjHit" disabled>Karte (Hit)</button>
+                <button class="chip" id="bjStand" disabled>
+                  Stehen (Stand)
+                </button>
+                <button class="chip" id="bjDouble" disabled>Verdoppeln</button>
+              </div>
+
+              <div class="bj-result" id="bjResult"></div>
+            </div>
+          </div>
+
+          <div class="bj-status" id="bjShoeInfo"></div>
+
+          <!-- Overlay-GIF für Ereignisse (z.B. Gewinn/Blackjack) -->
+          <div class="bj-gif-overlay" id="bjRoundGif" aria-hidden="true">
+            <img src="assets/gif/blackjack-win.gif" alt="Animation" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ROULETTE -->
+    <section id="roulette-section" class="page-section" style="display: none">
+      <div class="roulette-wrap">
+        <div class="back-button-container">
+          <button class="back-btn" onclick="showSection('games')">
+            <i class="fas fa-arrow-left"></i> Zurück zu Spielen
+          </button>
+        </div>
+        <h2 class="section-title">Roulette</h2>
+
+        <div class="roulette-table roulette-layout">
+          <!-- LINKSBLOCK: Rad -->
+          <div class="roulette-left">
+            <div class="roulette-bet">
+              <label for="rouletteBet">Einsatz pro Chip (CHF):</label>
+              <input
+                type="number"
+                id="rouletteBet"
+                min="1"
+                step="1"
+                value="10"
+              />
+              <span class="roulette-status" id="rouletteBalanceInfo"></span>
+            </div>
+
+            <div class="roulette-wheel-container">
+              <!-- der Ball darf NICHT im .roulette-wheel liegen -->
+              <div class="roulette-ball" id="rouletteBall"></div>
+              <div class="roulette-wheel" id="rouletteWheel">
+                <div class="roulette-inner"></div>
+                <!-- Zahlen werden per JS gesetzt -->
+              </div>
+            </div>
+
+            <div class="roulette-controls">
+              <button class="roulette-spin-btn" id="rouletteSpin" disabled>
+                Drehen
+              </button>
+              <button class="roulette-clear-btn" id="rouletteClear">
+                Alle Einsätze löschen
+              </button>
+            </div>
+            <div class="roulette-result" id="rouletteResult"></div>
+            <div class="roulette-history" id="rouletteHistory"></div>
+          </div>
+
+          <!-- RECHTSBLOCK: Setzfeld -->
+          <div class="roulette-right">
+            <div class="roulette-table-layout">
+              <table class="roulette-table-numbers" id="rouletteGrid">
+                <tr>
+                  <td colspan="3" class="roulette-zero green" data-number="0">
+                    0
+                  </td>
+                </tr>
+                <tr>
+                  <td class="red" data-number="32">32</td>
+                  <td class="black" data-number="15">15</td>
+                  <td class="red" data-number="19">19</td>
+                </tr>
+                <tr>
+                  <td class="black" data-number="4">4</td>
+                  <td class="red" data-number="21">21</td>
+                  <td class="black" data-number="2">2</td>
+                </tr>
+                <tr>
+                  <td class="red" data-number="25">25</td>
+                  <td class="black" data-number="17">17</td>
+                  <td class="red" data-number="34">34</td>
+                </tr>
+                <tr>
+                  <td class="black" data-number="6">6</td>
+                  <td class="red" data-number="27">27</td>
+                  <td class="black" data-number="13">13</td>
+                </tr>
+                <tr>
+                  <td class="red" data-number="36">36</td>
+                  <td class="black" data-number="11">11</td>
+                  <td class="red" data-number="30">30</td>
+                </tr>
+                <tr>
+                  <td class="black" data-number="8">8</td>
+                  <td class="red" data-number="23">23</td>
+                  <td class="black" data-number="10">10</td>
+                </tr>
+                <tr>
+                  <td class="red" data-number="5">5</td>
+                  <td class="black" data-number="24">24</td>
+                  <td class="red" data-number="16">16</td>
+                </tr>
+                <tr>
+                  <td class="black" data-number="33">33</td>
+                  <td class="red" data-number="1">1</td>
+                  <td class="black" data-number="20">20</td>
+                </tr>
+                <tr>
+                  <td class="red" data-number="14">14</td>
+                  <td class="black" data-number="31">31</td>
+                  <td class="red" data-number="9">9</td>
+                </tr>
+                <tr>
+                  <td class="black" data-number="22">22</td>
+                  <td class="red" data-number="18">18</td>
+                  <td class="black" data-number="29">29</td>
+                </tr>
+                <tr>
+                  <td class="red" data-number="7">7</td>
+                  <td class="black" data-number="28">28</td>
+                  <td class="red" data-number="12">12</td>
+                </tr>
+                <tr>
+                  <td class="black" data-number="35">35</td>
+                  <td class="red" data-number="3">3</td>
+                  <td class="black" data-number="26">26</td>
+                </tr>
+              </table>
+            </div>
+
+            <div class="roulette-bets-grid">
+              <div class="roulette-bet-option" data-bet="red">Rot</div>
+              <div class="roulette-bet-option" data-bet="black">Schwarz</div>
+              <div class="roulette-bet-option" data-bet="even">Gerade</div>
+              <div class="roulette-bet-option" data-bet="odd">Ungerade</div>
+              <div class="roulette-bet-option" data-bet="1st12">1–12</div>
+              <div class="roulette-bet-option" data-bet="2nd12">13–24</div>
+              <div class="roulette-bet-option" data-bet="3rd12">25–36</div>
+            </div>
+            <small class="roulette-help"
+              >Klick = +1 Chip • Rechtsklick = −1 Chip</small
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PLINKO -->
+    <section id="plinko-section" class="page-section" style="display: none">
+      <div class="plinko-wrap">
+        <div class="back-button-container">
+          <button class="back-btn" onclick="showSection('games')">
+            <i class="fas fa-arrow-left"></i> Zurück zu Spielen
+          </button>
+        </div>
+        <h2 class="section-title">Plinko Ball</h2>
+
+        <div class="plinko-table">
+          <div class="plinko-header">
+            <div class="plinko-bet">
+              <label for="plinkoBet">Einsatz (CHF):</label>
+              <input type="number" id="plinkoBet" min="1" step="1" value="10" />
+              <label for="plinkoDifficulty" class="plinko-label"
+                >Schwierigkeit:</label
+              >
+              <select id="plinkoDifficulty">
+                <option value="easy">Leicht (8 Reihen)</option>
+                <option value="medium" selected>Mittel (12 Reihen)</option>
+                <option value="hard">Schwierig (16 Reihen)</option>
+              </select>
+              <span class="plinko-status" id="plinkoBalanceInfo"></span>
+            </div>
+            <div class="plinko-controls">
+              <button class="plinko-drop-btn" id="plinkoDrop">
+                Ball fallen lassen
+              </button>
+            </div>
+          </div>
+
+          <div class="plinko-board-outer">
+            <div class="plinko-board" id="plinkoBoard">
+              <!-- Pegs werden per JS erzeugt -->
+            </div>
+
+            <!-- Slots / Auszahlungen -->
+            <div class="plinko-slots" id="plinkoSlots">
+              <!-- Payout-Badges pro Slot -->
+            </div>
+          </div>
+
+          <div class="plinko-result" id="plinkoResult"></div>
+          <div class="plinko-history" id="plinkoHistory"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="agb-section" class="page-section">
+      <h2 class="section-title">Allgemeine Geschäftsbedingungen (AGB)</h2>
+      <div class="legal-content">
+        <div class="legal-section">
+          <h3>1. Geltungsbereich</h3>
+          <p>
+            Diese Allgemeinen Geschäftsbedingungen (AGB) gelten für sämtliche
+            Dienstleistungen, Spiele und Angebote, welche die JeeBet AG
+            (nachfolgend «JeeBet», «wir» oder «uns») über ihre Online-Plattform
+            unter <em>www.jeebet.ch</em> anbietet. Mit der Registrierung eines
+            Benutzerkontos und der Nutzung der Dienste akzeptiert der Nutzer
+            («Kunde» oder «Spieler») diese AGB in der jeweils aktuellen Fassung.
+          </p>
+        </div>
+
+        <div class="legal-section">
+          <h3>2. Anwendbares Recht und Gerichtsstand</h3>
+          <p>
+            Diese AGB unterstehen dem Schweizerischen Recht, insbesondere dem
+            <strong>Obligationenrecht (OR)</strong> und dem
+            <strong>Zivilgesetzbuch (ZGB)</strong>. Ausschliesslicher
+            Gerichtsstand für alle Streitigkeiten ist der Sitz von JeeBet in
+            Zürich, Schweiz, soweit keine zwingenden gesetzlichen Bestimmungen
+            entgegenstehen.
+          </p>
+        </div>
+
+        <div class="legal-section">
+          <h3>3. Teilnahmevoraussetzungen</h3>
+          <p>
+            Zur Nutzung der JeeBet-Plattform müssen folgende Voraussetzungen
+            erfüllt sein:
+          </p>
+          <ul>
+            <li>
+              Der Spieler ist mindestens 18 Jahre alt und voll handlungsfähig
+              (Art. 13 ff. ZGB).
+            </li>
+            <li>
+              Der Spieler hat seinen Wohnsitz in einem Land, in dem
+              Online-Glücksspiel gemäss nationalem Recht zulässig ist.
+            </li>
+            <li>Pro Person darf nur ein Benutzerkonto eröffnet werden.</li>
+            <li>
+              Die bei der Registrierung gemachten Angaben sind vollständig und
+              wahrheitsgetreu.
+            </li>
+          </ul>
+        </div>
+
+        <div class="legal-section">
+          <h3>4. Kontoeröffnung und Identitätsprüfung</h3>
+          <p>
+            Zur Nutzung kostenpflichtiger Dienste ist die Eröffnung eines
+            persönlichen Spielerkontos erforderlich. JeeBet kann jederzeit
+            Identitätsnachweise (z. B. Ausweiskopie, Adressbestätigung)
+            verlangen, um die Einhaltung der gesetzlichen Vorschriften,
+            insbesondere der Geldwäschereibestimmungen gemäss
+            Geldwäschereigesetz (GwG), sicherzustellen.
+          </p>
+        </div>
+
+        <div class="legal-section">
+          <h3>5. Einzahlungen und Auszahlungen</h3>
+          <p>
+            Einzahlungen werden dem Spielerkonto nach erfolgreicher
+            Zahlungsbestätigung gutgeschrieben. Auszahlungen erfolgen
+            ausschliesslich auf ein Konto, das auf den Namen des Spielers
+            lautet. JeeBet behält sich das Recht vor, Transaktionen bei Verdacht
+            auf Missbrauch oder Geldwäscherei gemäss den geltenden Gesetzen
+            zurückzuhalten oder zu blockieren.
+          </p>
+          <p>
+            Die Mindesteinzahlung beträgt CHF 10.–, die Mindestauszahlung CHF
+            20.–. JeeBet übernimmt keine Haftung für Verzögerungen durch
+            Zahlungsdienstleister.
+          </p>
+        </div>
+
+        <div class="legal-section">
+          <h3>6. Bonus- und Promotionsbedingungen</h3>
+          <p>
+            Bonusangebote und Promotionen unterliegen speziellen Bedingungen,
+            die dem Spieler jeweils vor der Teilnahme angezeigt werden. Sofern
+            nicht anders angegeben, beträgt die Umsatzanforderung 35× des
+            Bonusbetrages innerhalb von 30 Tagen. Bei Verstoss gegen die
+            Bonusregeln behält sich JeeBet das Recht vor, den Bonus sowie daraus
+            erzielte Gewinne zu annullieren.
+          </p>
+        </div>
+
+        <div class="legal-section">
+          <h3>7. Verantwortungsvolles Spielen</h3>
+          <p>
+            JeeBet verpflichtet sich zum Schutz der Spieler vor Spielsucht.
+            Spieler können individuelle Einsatz-, Verlust- oder Zeitlimits
+            festlegen oder eine zeitweilige oder dauerhafte Sperre beantragen.
+            Weitere Informationen sind unter
+            <em>www.jeebet.ch/responsible-gaming</em> abrufbar.
+          </p>
+        </div>
+
+        <div class="legal-section">
+          <h3>8. Haftungsausschluss</h3>
+          <p>
+            JeeBet haftet nur für Schäden, die durch vorsätzliches oder
+            grobfahrlässiges Verhalten verursacht werden (Art. 97 OR). Für
+            indirekte oder Folgeschäden, Datenverluste, Systemausfälle oder
+            Fehler von Drittanbietern wird jegliche Haftung ausgeschlossen.
+          </p>
+          <p>
+            Der Spieler ist selbst verantwortlich für die Sicherung seiner
+            Zugangsdaten und die Einhaltung lokaler gesetzlicher Vorschriften
+            bezüglich Online-Glücksspiel.
+          </p>
+        </div>
+
+        <div class="legal-section">
+          <h3>9. Datenschutz</h3>
+          <p>
+            JeeBet verarbeitet personenbezogene Daten ausschliesslich im Rahmen
+            der
+            <a href="#datenschutz">Datenschutzerklärung</a> und gemäss den
+            Vorgaben des Schweizer Datenschutzgesetzes (DSG) sowie – soweit
+            anwendbar – der Datenschutz-Grundverordnung (DSGVO) der EU.
+          </p>
+        </div>
+
+        <div class="legal-section">
+          <h3>10. Vertragsänderungen</h3>
+          <p>
+            JeeBet behält sich das Recht vor, diese AGB jederzeit zu ändern.
+            Änderungen treten mit der Veröffentlichung auf der Website in Kraft.
+            Bei wesentlichen Anpassungen wird der Spieler per E-Mail oder
+            In-App-Mitteilung informiert.
+          </p>
+        </div>
+
+        <div class="legal-section">
+          <h3>11. Salvatorische Klausel</h3>
+          <p>
+            Sollten einzelne Bestimmungen dieser AGB unwirksam oder
+            undurchführbar sein, bleibt die Wirksamkeit der übrigen Bestimmungen
+            unberührt. Anstelle der unwirksamen Regelung gilt dasjenige als
+            vereinbart, was dem wirtschaftlichen Zweck der Bestimmung am
+            nächsten kommt (Art. 18 OR analog).
+          </p>
+        </div>
+
+        <div class="legal-section">
+          <h3>12. Kontakt</h3>
+          <p>
+            JeeBet AG<br />
+            Industriestrasse 13<br />
+            6300 Zug<br />
+            Schweiz<br />
+            E-Mail: <a href="mailto:support@jeebet.ch">support@jeebet.ch</a>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Impressum -->
+    <section id="impressum-section" class="page-section">
+      <h2 class="section-title">Impressum</h2>
+      <div class="legal-content">
+        <div class="legal-section">
+          <h3>Verantwortlich für den Inhalt</h3>
+          <p>
+            JeeBet AG<br />
+            Industriestrasse&nbsp;13<br />
+            6300&nbsp;Zug<br />
+            Schweiz
+          </p>
+        </div>
+
+        <div class="legal-section">
+          <h3>Kontakt</h3>
+          <p>
+            Telefon: +41&nbsp;76&nbsp;212&nbsp;96&nbsp;34<br />
+            E-Mail: <a href="mailto:support@jeebet.ch">support@jeebet.ch</a>
+          </p>
+        </div>
+
+        <div class="legal-section">
+          <h3>Vertretungsberechtigte Personen</h3>
+          <p>Geschäftsführer: Amar&nbsp;Nuhija</p>
+        </div>
+
+        <div class="legal-section">
+          <h3>Handelsregistereintrag</h3>
+          <p>
+            Eingetragen im Handelsregister des Kantons&nbsp;Zug<br />
+            UID-Nummer:&nbsp;CHE-999.123.456<br />
+            Handelsregister-Nummer:&nbsp;CH-6300.99.12345
+          </p>
+        </div>
+
+        <div class="legal-section">
+          <h3>Mehrwertsteuer-Nr.</h3>
+          <p>CHE-999.123.456 IVA&nbsp;MWST</p>
+        </div>
+
+        <div class="legal-section">
+          <h3>Aufsichts- und Bewilligungsbehörde</h3>
+          <p>
+            Eidgenössische Spielbankenkommission&nbsp;(ESBK)<br />
+            Bundesgasse&nbsp;20<br />
+            3003&nbsp;Bern<br />
+            Schweiz<br />
+            <a href="https://www.esbk.admin.ch" target="_blank"
+              >www.esbk.admin.ch</a
+            >
+          </p>
+        </div>
+
+        <div class="legal-section">
+          <h3>Haftungshinweis</h3>
+          <p>
+            Trotz sorgfältiger inhaltlicher Kontrolle übernimmt JeeBet keine
+            Haftung für die Richtigkeit, Vollständigkeit oder Aktualität der
+            bereitgestellten Informationen. Für den Inhalt externer Links sind
+            ausschliesslich deren Betreiber verantwortlich.
+          </p>
+        </div>
+
+        <div class="legal-section">
+          <h3>Datenschutz</h3>
+          <p>
+            Der Schutz Ihrer personenbezogenen Daten ist uns wichtig.
+            Informationen zur Datenverarbeitung finden Sie in unserer
+            <a href="#datenschutz">Datenschutzerklärung</a>.
+          </p>
+        </div>
+
+        <div class="legal-section">
+          <h3>Rechtsgrundlagen</h3>
+          <p>
+            Dieses Impressum wurde gemäss den Bestimmungen des
+            <strong>Obligationenrechts (OR)</strong>, des
+            <strong>Bundesgesetzes über den Datenschutz (DSG)</strong>
+            sowie des
+            <strong
+              >Bundesgesetzes gegen den unlauteren Wettbewerb (UWG)</strong
+            >
+            erstellt.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Datenschutz -->
+    <section id="datenschutz-section" class="page-section">
+      <h2 class="section-title">Datenschutzerklärung</h2>
+      <div class="legal-content">
+        <div class="legal-section">
+          <h3>1. Allgemeine Hinweise</h3>
+          <p>
+            Der Schutz Ihrer personenbezogenen Daten ist uns ein wichtiges
+            Anliegen. Diese Datenschutzerklärung informiert Sie darüber, wie
+            JeeBet mit Ihren Daten umgeht, wenn Sie unsere Website oder unsere
+            Spielplattform nutzen. Wir verarbeiten Ihre Daten im Einklang mit
+            dem schweizerischen
+            <strong>Bundesgesetz über den Datenschutz (DSG)</strong> sowie –
+            sofern anwendbar – der
+            <strong>Datenschutz-Grundverordnung (DSGVO)</strong> der
+            Europäischen Union.
+          </p>
+        </div>
+
+        <div class="legal-section">
+          <h3>2. Verantwortliche Stelle</h3>
+          <p>
+            JeeBet&nbsp;AG<br />
+            Industriestrasse&nbsp;13<br />
+            6300&nbsp;Zug&nbsp;–&nbsp;Schweiz<br />
+            E-Mail:&nbsp;<a href="mailto:support@jeebet.ch">support@jeebet.ch</a
+            ><br />
+            Telefon:&nbsp;+41&nbsp;41&nbsp;123&nbsp;45&nbsp;67
+          </p>
+        </div>
+
+        <div class="legal-section">
+          <h3>3. Arten von erhobenen Daten</h3>
+          <p>
+            Wir erheben und verarbeiten insbesondere folgende Kategorien
+            personenbezogener Daten:
+          </p>
+          <ul>
+            <li>Stammdaten (Name, Geburtsdatum, Adresse, Nationalität)</li>
+            <li>Kontaktdaten (E-Mail, Telefonnummer)</li>
+            <li>
+              Zugangsdaten (Benutzername, Login-Informationen, IP-Adresse)
+            </li>
+            <li>Zahlungs- und Transaktionsdaten</li>
+            <li>Spiel- und Nutzungshistorie auf unserer Plattform</li>
+            <li>Kommunikationsdaten (z. B. Support-Anfragen)</li>
+          </ul>
+        </div>
+
+        <div class="legal-section">
+          <h3>4. Zweck der Datenbearbeitung</h3>
+          <p>
+            Wir bearbeiten Ihre personenbezogenen Daten nur zu den Zwecken, die
+            zur Bereitstellung unserer Dienstleistungen erforderlich sind,
+            insbesondere für:
+          </p>
+          <ul>
+            <li>Vertragserfüllung und Kontoverwaltung</li>
+            <li>
+              Alters- und Identitätsprüfung gemäss
+              Geldwäschereigesetz&nbsp;(GwG)
+            </li>
+            <li>Zahlungsabwicklung und Auszahlung von Gewinnen</li>
+            <li>Kundenbetreuung und technische Unterstützung</li>
+            <li>Erfüllung gesetzlicher Melde- und Aufbewahrungspflichten</li>
+            <li>Analyse und Verbesserung unserer Plattform</li>
+            <li>
+              Marketing- und Informationszwecke, sofern Sie eingewilligt haben
+            </li>
+          </ul>
+        </div>
+
+        <div class="legal-section">
+          <h3>5. Weitergabe von Daten</h3>
+          <p>
+            Eine Weitergabe Ihrer Daten erfolgt nur, soweit dies zur
+            Vertragserfüllung oder zur Einhaltung gesetzlicher Pflichten
+            notwendig ist. Empfänger können insbesondere sein:
+          </p>
+          <ul>
+            <li>Zahlungsdienstleister und Banken</li>
+            <li>Behörden oder Aufsichtsstellen (z. B. ESBK)</li>
+            <li>IT-Dienstleister und Hosting-Partner</li>
+            <li>Prüf- und Compliance-Dienstleister</li>
+          </ul>
+          <p>
+            Eine Datenübermittlung ins Ausland erfolgt nur in Staaten mit
+            angemessenem Datenschutz-Niveau gemäss Anhang 1 der
+            Datenschutzverordnung (DSV) oder unter Verwendung geeigneter
+            Garantien.
+          </p>
+        </div>
+
+        <div class="legal-section">
+          <h3>6. Cookies und Analyse-Tools</h3>
+          <p>
+            Unsere Website verwendet Cookies und ähnliche Technologien, um
+            Benutzerfreundlichkeit, Sicherheit und Leistung zu verbessern. Sie
+            können die Speicherung von Cookies in den Einstellungen Ihres
+            Browsers deaktivieren, was jedoch die Funktionalität der Plattform
+            einschränken kann.
+          </p>
+          <p>
+            Zur anonymisierten Auswertung der Nutzung können wir
+            Web-Analyse-Tools wie
+            <em>Matomo</em> oder <em>Google Analytics</em> einsetzen. Dabei
+            werden keine personenbezogenen Profile erstellt.
+          </p>
+        </div>
+
+        <div class="legal-section">
+          <h3>7. Datensicherheit</h3>
+          <p>
+            Wir treffen angemessene technische und organisatorische Massnahmen,
+            um Ihre Daten vor Verlust, Missbrauch, unbefugtem Zugriff und
+            Manipulation zu schützen. Die Übertragung sensibler Daten erfolgt
+            ausschliesslich über SSL-verschlüsselte Verbindungen. Unsere
+            Sicherheitsmassnahmen werden regelmässig überprüft und
+            weiterentwickelt.
+          </p>
+        </div>
+
+        <div class="legal-section">
+          <h3>8. Aufbewahrungsdauer</h3>
+          <p>
+            Personenbezogene Daten werden nur so lange aufbewahrt, wie dies für
+            die Zwecke der Datenbearbeitung erforderlich ist oder eine
+            gesetzliche Aufbewahrungspflicht besteht, z. B. nach Art.&nbsp;958f
+            OR (Buchführungs- und Belegaufbewahrung: 10 Jahre).
+          </p>
+        </div>
+
+        <div class="legal-section">
+          <h3>9. Rechte der betroffenen Personen</h3>
+          <p>Sie haben gemäss DSG folgende Rechte:</p>
+          <ul>
+            <li>Recht auf Auskunft über Ihre gespeicherten Daten</li>
+            <li>
+              Recht auf Berichtigung unrichtiger oder unvollständiger Daten
+            </li>
+            <li>
+              Recht auf Löschung (sofern keine gesetzliche Pflicht zur
+              Aufbewahrung besteht)
+            </li>
+            <li>
+              Recht auf Einschränkung oder Widerspruch gegen die Bearbeitung
+            </li>
+            <li>
+              Recht auf Datenherausgabe oder Übertragung (Art.&nbsp;25 DSG)
+            </li>
+          </ul>
+          <p>
+            Zur Wahrnehmung dieser Rechte können Sie sich jederzeit an
+            <a href="mailto:support@jeebet.ch">support@jeebet.ch</a> wenden.
+          </p>
+        </div>
+
+        <div class="legal-section">
+          <h3>10. Änderungen dieser Datenschutzerklärung</h3>
+          <p>
+            JeeBet behält sich das Recht vor, diese Datenschutzerklärung bei
+            Bedarf anzupassen, insbesondere bei Änderungen gesetzlicher Vorgaben
+            oder technischer Entwicklungen. Die jeweils aktuelle Version wird
+            auf <em>www.jeebet.ch</em> veröffentlicht.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Kontakt -->
+    <section id="kontakt-section" class="page-section">
+      <h2 class="section-title">Kontakt</h2>
+      <div class="contact-container">
+        <div class="contact-info">
+          <h3>Kontaktinformationen</h3>
+          <div class="contact-detail">
+            <i class="fas fa-map-marker-alt"></i>
+            <div>
+              <p><strong>Adresse</strong></p>
+              <p>JeeBet GmbH<br />Industriestrasse 13<br />6300 Zug</p>
+            </div>
+          </div>
+          <div class="contact-detail">
+            <i class="fas fa-phone"></i>
+            <div>
+              <p><strong>Telefon</strong></p>
+              <p>+41 76 212 96 34</p>
+            </div>
+          </div>
+          <div class="contact-detail">
+            <i class="fas fa-envelope"></i>
+            <div>
+              <p><strong>E-Mail</strong></p>
+              <p>amar_n_4@hotmail.com</p>
+            </div>
+          </div>
+          <div class="contact-detail">
+            <i class="fas fa-clock"></i>
+            <div>
+              <p><strong>Support-Zeiten</strong></p>
+              <p>24/7 per E-Mail<br />Telefon: Mo–Fr 08:00–22:00</p>
+            </div>
+          </div>
+        </div>
+        <div class="contact-form">
+          <h3>Nachricht senden</h3>
+          <form
+            id="contactForm"
+            action="https://formspree.io/f/mblajjvv"
+            method="POST"
+          >
+            <input
+              type="hidden"
+              name="_subject"
+              value="Neue Nachricht über JeeBet"
+            />
+            <div class="form-group">
+              <label for="contactName">Name</label
+              ><input type="text" id="contactName" name="name" required />
+            </div>
+            <div class="form-group">
+              <label for="contactEmail">E-Mail</label
+              ><input type="email" id="contactEmail" name="email" required />
+            </div>
+            <div class="form-group">
+              <label for="contactSubject">Betreff</label
+              ><input type="text" id="contactSubject" name="subject" required />
+            </div>
+            <div class="form-group">
+              <label for="contactMessage">Nachricht</label
+              ><textarea id="contactMessage" name="message" required></textarea>
+            </div>
+            <button type="submit" class="form-submit" id="contactSubmitBtn">
+              Nachricht senden
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Login Modal -->
+    <div class="modal" id="loginModal">
+      <div class="modal-content">
+        <button class="close-modal">&times;</button>
+        <h2 class="modal-title">Anmelden</h2>
+        <form id="loginForm">
+          <div class="form-group">
+            <label for="loginEmail">E-Mail oder Benutzername</label>
+            <input type="text" id="loginEmail" required />
+            <div class="error-message" id="loginEmailError">
+              Bitte gib eine E-Mail oder einen Benutzernamen ein
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="loginPassword">Passwort</label>
+            <input type="password" id="loginPassword" required />
+            <div class="error-message" id="loginPasswordError">
+              Passwort ist erforderlich
+            </div>
+          </div>
+          <button type="submit" class="form-submit" id="loginSubmit">
+            Anmelden
+          </button>
+        </form>
+        <div class="form-footer">
+          Noch kein Konto? <a onclick="switchToRegister()">Registrieren</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div class="modal" id="registerModal">
+      <div class="modal-content">
+        <button class="close-modal">&times;</button>
+        <h2 class="modal-title">Registrieren</h2>
+        <form id="registerForm">
+          <div class="form-group">
+            <label for="registerUsername">Benutzername</label
+            ><input type="text" id="registerUsername" required minlength="3" />
+            <div class="error-message" id="usernameError">
+              Benutzername muss mindestens 3 Zeichen lang sein
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="registerEmail">E-Mail</label
+            ><input type="email" id="registerEmail" required />
+            <div class="error-message" id="emailError">
+              Bitte gib eine gültige E-Mail-Adresse ein
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="registerPassword">Passwort</label>
+            <input
+              type="password"
+              id="registerPassword"
+              required
+              minlength="8"
+            />
+            <div class="password-strength">
+              <div class="password-strength-bar" id="passwordStrengthBar"></div>
+            </div>
+            <div class="error-message" id="passwordError">
+              Passwort muss mindestens 8 Zeichen lang sein und
+              Gross-/Kleinbuchstaben, Zahlen & Sonderzeichen enthalten
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="registerConfirmPassword">Passwort bestätigen</label
+            ><input type="password" id="registerConfirmPassword" required />
+            <div class="error-message" id="confirmPasswordError">
+              Passwörter stimmen nicht überein
+            </div>
+          </div>
+          <button
+            type="submit"
+            class="form-submit"
+            id="registerSubmit"
+            disabled
+          >
+            Konto erstellen
+          </button>
+        </form>
+        <div class="form-footer">
+          Bereits ein Konto? <a onclick="switchToLogin()">Anmelden</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2FA Modal -->
+    <div class="modal" id="twofaModal">
+      <div class="modal-content">
+        <button class="close-modal">&times;</button>
+        <h2 class="modal-title">Zwei-Faktor-Authentifizierung</h2>
+        <div class="twofa-instructions">
+          <p>
+            Wir haben einen 6-stelligen Bestätigungscode an Ihre E-Mail-Adresse
+            gesendet.
+          </p>
+          <p>Bitte gib den Code ein, um dein Konto zu verifizieren.</p>
+          <p
+            id="twofaCodeHint"
+            style="
+              margin-top: 10px;
+              font-weight: bold;
+              color: var(--accent-color);
+            "
+          ></p>
+        </div>
+        <form id="twofaForm">
+          <div class="form-group">
+            <label for="twofaCode">Bestätigungscode</label
+            ><input
+              type="text"
+              id="twofaCode"
+              required
+              pattern="[0-9]{6}"
+              maxlength="6"
+              placeholder="123456"
+            />
+            <div class="error-message" id="twofaError">
+              Bitte gib einen gültigen 6-stelligen Code ein
+            </div>
+          </div>
+          <button type="submit" class="form-submit" id="twofaSubmit">
+            Verifizieren
+          </button>
+        </form>
+        <div class="form-footer">
+          <a href="#" onclick="resend2FACode()">Code erneut senden</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Blackjack: Continue Modal -->
+    <div class="modal bj-continue-modal" id="bjContinueModal">
+      <div class="modal-content">
+        <h2 class="modal-title">Noch eine Runde?</h2>
+        <p
+          style="color: var(--secondary-text); margin-bottom: 16px"
+          id="bjRoundSummary"
+        ></p>
+        <div style="display: flex; gap: 10px; justify-content: center">
+          <button class="chip" id="bjYes">Ja, weiter</button>
+          <button class="chip" id="bjNo">Nein, zurück zu Spiele</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <div class="footer-links">
+        <a
+          onclick="showSection('impressum'); showNotification('Du bist zur Seite Impressum')"
+          ><b>Impressum</b></a
+        >
+        <a
+          onclick="showSection('datenschutz'); showNotification('Du bist zur Seite Datenschutz');"
+          ><b>Datenschutz</b></a
+        >
+        <a
+          onclick="showSection('agb'); showNotification('Du bist zur Seite AGB');"
+          ><b>AGB</b></a
+        >
+        <a
+          onclick="showSection('kontakt'); showNotification('Du bist zur Seite Kontakt');"
+          ><b>Kontakt</b></a
+        >
+      </div>
+      <div class="copyright">
+        &copy; 2025 JeeBet. Alle Rechte vorbehalten.
+        <p class="copyright">
+          Glücksspiel kann süchtig machen. Spielen Sie verantwortungsvoll.
+        </p>
+      </div>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
