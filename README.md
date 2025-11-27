@@ -42,11 +42,8 @@ Heute habe ich an meiner Casino-Website ein paar weitere Veränderungen vorgenom
 
 ## Für den 21.11.25
 
-- [ ] Weiter an meiner Casino-Website
 - [x] Weiter an meiner Casino-Website
 - [ ] Interaktive Bilder usw.
-- [ ] JeeBet Lotto verbessern
-- [ ] Weitere Bewerbungen schicken
 - [x] JeeBet Lotto verbessern
 - [x] Weitere Bewerbungen schicken
 
@@ -56,3 +53,15 @@ Heute habe ich an meiner Casino-Website ein paar weitere Veränderungen vorgenom
 Ich habe das defekte Loginsystem repariert, indem ich eine Passwörter-Verschlüsselung und grundlegende Sicherheitsmaßnahmen gegen Hacker hinzugefügt habe. Außerdem habe ich ein Benutzer-Dashboard erstellt, das Spielerinformationen wie Benutzername und Profilbild aus der Datenbank abruft, und eine Funktion hinzugefügt, mit der man Profilbilder sicher hochladen und ändern kann.
 Ich habe das Design verbessert, indem ich alle Farben, Buttons und Layouts auf der Website einheitlich gestaltet habe. Zudem habe ich die Spiele interaktiver gemacht, indem ich Funktionen hinzugefügt habe, die ohne Neuladen der Seite funktionieren.
 Wenn ich auf Probleme gestoßen bin, habe ich recherchiert und sie Schritt für Schritt gelöst.
+
+## Für den 28.11.25
+
+- [ ] Weiter an meiner Casino-Website
+- [ ] Interaktive Bilder hinzufügen
+- [ ] JeeBet Lotto zum funktionieren bringen
+- [ ] Weitere Bewerbungen schicken
+
+## 28.11.25
+## Leit-Satz
+
+
