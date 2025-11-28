@@ -57,12 +57,23 @@ Wenn ich auf Probleme gestoßen bin, habe ich recherchiert und sie Schritt für 
 
 ## Für den 28.11.25
 
-- [ ] Weiter an meiner Casino-Website
+- [x] Weiter an meiner Casino-Website
 - [ ] Interaktive Bilder hinzufügen
 - [ ] JeeBet Lotto zum funktionieren bringen
-- [ ] Weitere Bewerbungen schicken
+- [x] Weitere Bewerbungen schicken
 
 ## 28.11.25
 ## Leit-Satz
 
+Heute habe ich mich eher darauf konzentriert, meine Homepage zu verändern und zu verbessern. Das geling mir auch gut indem ich die extra speziellen Effekte wie blauen schatten beim Hover rausgenommen oder allgemein einfach bei jedem hover oder bei jeder Interaktion die Effekt gekürzt oder sogar komplett entfernt habe. Das gefiel mir mit der Zeit nicht mehr so gut und auch das ich veraltete Projekte von mir bei der Homepage rausgenommen habe und viel neuere oder sogar noch sogar in bearbeitung. Dies war mir auch wichtig, dass die Firmen einfach meinen Stand kennen und die Transparenz gegeben ist. (98 Wörter)
+
+## Für den 5.12.25
+
+- [ ] Neues Spiel in die Casino Website hinzufügen
+- [ ] Interaktive Bilder und viel lebendiger gestalten
+- [ ] JeeBet Lotto funktionsfähig machen
+- [ ] Meine Homepage verbessern (Wenn nicht schon gemacht)$
+
+## 5.12.25
+## Leit-Satz
 
