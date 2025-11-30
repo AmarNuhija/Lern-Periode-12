@@ -70,9 +70,9 @@ Heute habe ich mich eher darauf konzentriert, meine Homepage zu verändern und z
 ## Für den 5.12.25
 
 - [ ] Neues Spiel in die Casino Website hinzufügen
-- [ ] Interaktive Bilder und viel lebendiger gestalten
 - [ ] JeeBet Lotto funktionsfähig machen
-- [ ] Meine Homepage verbessern (Wenn nicht schon gemacht)$
+- [ ] Escape-Room Spiel entwickeln
+- [ ] Escape-Room Spiel entwickeln
 
 ## 5.12.25
 ## Leit-Satz
