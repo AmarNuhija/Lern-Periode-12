@@ -71,9 +71,21 @@ Heute habe ich mich eher darauf konzentriert, meine Homepage zu verändern und z
 
 - [ ] Neues Spiel in die Casino Website hinzufügen
 - [ ] JeeBet Lotto funktionsfähig machen
-- [ ] Escape-Room Spiel entwickeln
-- [ ] Escape-Room Spiel entwickeln
+- [x] Escape-Room Spiel entwickeln
+- [x] Escape-Room Spiel entwickeln
 
 ## 5.12.25
+## Leit-Satz
+
+Heute habe ich mich darauf konzentiert, einen guten Start ins neue Projekt einzulegen. Dazu gehörte, dass ich erstmal meine Casino Website komplett ignoriert habe und erstmal auch davon pause mache. Das kommt daher, dass ich einfach mal wieder was neues, innovativeres machen möchte, dadurch kam ich auf die Idee ein Escape Room zu machen, mit dem Gedanken, in Zukunft es deploybar zu machen. Zum Projekt gehören Sachen wie Titelbildschirm (Loading-Screen), Voreinstellungen und Anmeldung und dann zum Ende die Lobby in der man verschiedene Räume und Spiele beitreten kann. Soweit habe ich es hingekriegt, einen Raum zu gestalten. Doch für die Zukunft und Planung kommen ungefähr 15-20 Spiele/Räume noch dazu. (109 Wörter)
+
+## Für den 12.12.25
+
+- [ ] Escape-Room
+- [ ] Escape-Room
+- [ ] Escape-Room
+- [ ] Escape-Room
+
+## 12.12.25
 ## Leit-Satz
 
