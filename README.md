@@ -81,11 +81,22 @@ Heute habe ich mich darauf konzentiert, einen guten Start ins neue Projekt einzu
 
 ## Für den 12.12.25
 
-- [ ] Escape-Room
-- [ ] Escape-Room
-- [ ] Escape-Room
-- [ ] Escape-Room
+- [x] Escape-Room
+- [x] Escape-Room
+- [x] Escape-Room
+- [x] Escape-Room
 
 ## 12.12.25
 ## Leit-Satz
 
+Heute habe ich mein Escape Room Spiel weiter implementiert. Raum 1 ist jetzt vollständig beendet und Raum 2 habe ich auch noch angefangen. In Raum 2 will ich, dass man 5 Figuren einordnen soll der Grösse nach. Doch welche grösse, ob Bart, Schwert, Schuh oder Körpergrösse usw. Jedes mal wenn man ein Kriterium erfüllt, kommt man weiter und das Spiel ist erst fertig wenn alle 5 Kriterien in diesem Spiel erfüllt sind. (72 Wörter)
+
+## Für den 19.12.25
+
+- [ ] Escape-Room
+- [ ] Escape-Room
+- [ ] Escape-Room
+- [ ] Escape-Room
+
+## 19.12.25
+## Leit-Satz
