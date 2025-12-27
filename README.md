@@ -93,10 +93,10 @@ Heute habe ich mein Escape Room Spiel weiter implementiert. Raum 1 ist jetzt vol
 
 ## Für den 19.12.25
 
-- [ ] Escape-Room
-- [ ] Escape-Room
-- [ ] Escape-Room
-- [ ] Escape-Room
+- [x] Escape-Room
+- [x] Escape-Room
+- [x] Escape-Room
+- [x] Escape-Room
 
 ## 19.12.25
 ## Leit-Satz
