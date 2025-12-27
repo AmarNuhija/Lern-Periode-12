@@ -100,3 +100,5 @@ Heute habe ich mein Escape Room Spiel weiter implementiert. Raum 1 ist jetzt vol
 
 ## 19.12.25
 ## Leit-Satz
+
+Heute habe ich mich darauf konzentriert, mein Escpae Room Spiel weiter zu entwickeln. Leider ging das nicht so gut mit den 5 Figuren. Ich werde es aber weiterhin versuchen besser zu machen und allenfalls KI zu benutzen. Weitere Ideen für weitere Räume sind schon da, doch die Implementierung wird schwierig werden und ich hoffe das ich es hinbekomme. Mein Loading Screen werde ich auch nochmals ein bisschen verändern. Ich will dass es so ein Schnee Effekt gibt und dann der name von meinem Spiel auftaucht. Auch wird der Name nochmals geändert weil ich den ein bisschen einfallslos finde. Weitere Effekte wie "Neue Welt" erstellen usw. sind schon da. (115 Wörter) 
